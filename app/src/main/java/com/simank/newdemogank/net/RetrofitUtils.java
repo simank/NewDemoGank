@@ -1,4 +1,4 @@
-package com.simank.newdemogank.utils;
+package com.simank.newdemogank.net;
 
 import com.simank.newdemogank.net.ApiService;
 
