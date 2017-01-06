@@ -1,5 +1,6 @@
 package com.simank.newdemogank.Bean;
 
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -54,7 +55,7 @@ public class GankBean {
         private String url;
         private boolean used;
         private String who;
-        private List<String> images;
+        private List<String> images = new ArrayList<>();
 
         public List<String> getImages(){
             return images;

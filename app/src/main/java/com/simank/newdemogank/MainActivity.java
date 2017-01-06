@@ -48,11 +48,31 @@ public class MainActivity extends AppCompatActivity implements MainView{
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+        ButterKnife.bind(this);
+
+       initToolBar();
+
+        initMenu();
         presenter = new MainPresenterImpl(this);
 
         presenter.getGankBean();
 
-        ButterKnife.bind(this);
+
+    }
+
+    /**
+     * 初始化侧滑菜单
+     */
+    private void initMenu() {
+        //listview
+        String[] str = new String[]{"meni01","menu02","menu03"};
+        listView.setAdapter(new ArrayAdapter<String>(MainActivity.this,android.R.layout.simple_list_item_activated_1,str));
+    }
+
+    /**
+     * 初始化toolbar
+     */
+    private void initToolBar() {
 
         toolbar.setTitle("Gank News");
         toolbar.setTitleTextColor(Color.BLUE);
@@ -75,13 +95,6 @@ public class MainActivity extends AppCompatActivity implements MainView{
 
         mToggle.syncState();
         drawerLayout.addDrawerListener(mToggle);
-
-
-        //listview
-        String[] str = new String[]{"meni01","menu02","menu03"};
-        listView.setAdapter(new ArrayAdapter<String>(MainActivity.this,android.R.layout.simple_list_item_activated_1,str));
-
-
     }
 
     @Override
@@ -89,14 +102,11 @@ public class MainActivity extends AppCompatActivity implements MainView{
 
         List<GankBean.ResultsBean> list = new ArrayList<>();
         list = bean.getResults();
-        Toast.makeText(MainActivity.this,"success"+list.get(3).getDesc(),Toast.LENGTH_SHORT).show();
+        Toast.makeText(MainActivity.this,list.get(1).getImages().get(0),Toast.LENGTH_SHORT).show();
         MainRecycleAdapter mAdapter = new MainRecycleAdapter(list,MainActivity.this);
         recyclerView.setAdapter(mAdapter);
         layoutManager = new LinearLayoutManager(MainActivity.this,LinearLayoutManager.VERTICAL,false);
         recyclerView.setLayoutManager(layoutManager);
-
-
-
 
     }
 

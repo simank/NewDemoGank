@@ -30,9 +30,6 @@ public class RetrofitUtils {
         return getRetrofit();
     }
 
-
-
-
     public static void init(){
 
         retrofit = new Retrofit.Builder().baseUrl(ApiService.BASE_URL).addConverterFactory(GsonConverterFactory.create()).build();
